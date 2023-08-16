@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div id="container">
+        <h1><i class="fa-solid fa-address-book"></i>  My Contact List</h1>
+        <ul class="no-bullets">
+            <% for(let i of contact_list){ %>
+                <li>
+                    <div class="material-symbols-outlined">
+                        person
+                    </div>
+                    <div class="details">
+                        <div><%= i.name %></div>
+                        <div><%= i.phone %></div>
+                    </div>
+                    <!-- when using DB id is the best option to find a specific contact -->
+                    <a href="/delete-contact/?id=<%= i._id %>">
+
+                    <!-- using name and phone to find the contact -->
+                    <!-- <a href="/delete-contact/?name=<%= i.name %>&phone=<%= i.phone %>"> -->
+                        <div class="material-symbols-outlined dlt">
+                        delete
+                    </div></a>
+                    
+                </li>
+            <% } %>
+        </ul>
+        <form class="addCntc" action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Name...">
+            <input type="number" name="phone" placeholder="Phone No...">
+            <button type="submit">Add Contact</button>
+        </form>
+    </div>
+    
+<script type="text/javascript" src="/js/home.js"></script>
+</body>
+</html>
